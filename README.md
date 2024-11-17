@@ -12,6 +12,9 @@
 원하는 epoch를 설정한 후, Auto queue를 통해 학습을 진행합니다.
 학습이 완료되면 exception이 발생하며 queue가 종료됩니다.
 
+CustomModelTrainer node의 accumulate 값은 Gradient accumulation 설정입니다.
+필요하지 않은 경우 1로 설정해주십시오.
+
 주의 : 학습 도중 특정 노드가 비활성화 될 경우, 해당 노드의 input에
 "trigger":("INT", {"default":0})를 추가한 후 해당 노드의 실행 함수에
 self.trigger=trigger 을 추가하여주십시오. 이 후 추가된 trigger 입력에
