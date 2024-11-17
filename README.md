@@ -1,6 +1,7 @@
 # ComfyUI_EasyTrain
 
 ![1step_](https://github.com/user-attachments/assets/53229cca-46af-4cb8-a978-390d1007442a)
+![middle](https://github.com/user-attachments/assets/ddffa32c-30f4-42e4-9585-8bd748e4b586)
 
 ***ComfyUI를 이용한 모델 학습용 custom node입니다.
 
