@@ -1,0 +1,1109 @@
+{
+  "last_node_id": 52,
+  "last_link_id": 86,
+  "nodes": [
+    {
+      "id": 52,
+      "type": "LoadImage",
+      "pos": [
+        -231.22088623046875,
+        55.479068756103516
+      ],
+      "size": [
+        315,
+        314
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            86
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "example.png",
+        "image"
+      ]
+    },
+    {
+      "id": 45,
+      "type": "ImageResize",
+      "pos": [
+        106.77970886230469,
+        57.479061126708984
+      ],
+      "size": [
+        315,
+        246
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "pixels",
+          "type": "IMAGE",
+          "link": 86
+        },
+        {
+          "name": "mask_optional",
+          "type": "MASK",
+          "link": null,
+          "shape": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            64,
+            65
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageResize"
+      },
+      "widgets_values": [
+        "resize only",
+        48,
+        0,
+        0,
+        "reduce size only",
+        "4:3",
+        0.5,
+        20
+      ]
+    },
+    {
+      "id": 39,
+      "type": "Img2Tensor",
+      "pos": [
+        198.0975341796875,
+        357.15606689453125
+      ],
+      "size": [
+        210,
+        58
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 64
+        },
+        {
+          "name": "trigger",
+          "type": "INT",
+          "link": 83,
+          "widget": {
+            "name": "trigger"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "tensor",
+          "type": "TENSOR",
+          "links": [
+            61,
+            72
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Img2Tensor"
+      },
+      "widgets_values": [
+        954
+      ]
+    },
+    {
+      "id": 18,
+      "type": "Architecture_Linear",
+      "pos": [
+        488.5148010253906,
+        275.47052001953125
+      ],
+      "size": [
+        210,
+        126
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "input",
+          "type": "TENSOR",
+          "link": 62,
+          "shape": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "output",
+          "type": "TENSOR",
+          "links": [
+            31
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "model",
+          "type": "MODEL",
+          "links": [
+            40
+          ],
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Architecture_Linear"
+      },
+      "widgets_values": [
+        6912,
+        4000,
+        true
+      ]
+    },
+    {
+      "id": 20,
+      "type": "Activation_SiLU",
+      "pos": [
+        723.514404296875,
+        344.47039794921875
+      ],
+      "size": [
+        210,
+        58
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "input",
+          "type": "TENSOR",
+          "link": 31
+        }
+      ],
+      "outputs": [
+        {
+          "name": "output",
+          "type": "TENSOR",
+          "links": [
+            32
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Activation_SiLU"
+      },
+      "widgets_values": [
+        false
+      ]
+    },
+    {
+      "id": 19,
+      "type": "Architecture_Linear",
+      "pos": [
+        954.5142211914062,
+        276.47052001953125
+      ],
+      "size": [
+        210,
+        126
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "input",
+          "type": "TENSOR",
+          "link": 32,
+          "shape": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "output",
+          "type": "TENSOR",
+          "links": [
+            85
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "model",
+          "type": "MODEL",
+          "links": [
+            39
+          ],
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Architecture_Linear"
+      },
+      "widgets_values": [
+        4000,
+        6912,
+        true
+      ]
+    },
+    {
+      "id": 35,
+      "type": "SetParameters",
+      "pos": [
+        669.87646484375,
+        -25.363861083984375
+      ],
+      "size": [
+        210,
+        26
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 40
+        }
+      ],
+      "outputs": [
+        {
+          "name": "parameters",
+          "type": "PARAMETERS",
+          "links": [
+            50
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SetParameters"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 21,
+      "type": "SetParameters",
+      "pos": [
+        668.87646484375,
+        45.636131286621094
+      ],
+      "size": [
+        210,
+        26
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 39
+        }
+      ],
+      "outputs": [
+        {
+          "name": "parameters",
+          "type": "PARAMETERS",
+          "links": [
+            51
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SetParameters"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 36,
+      "type": "ConcatParameters",
+      "pos": [
+        887.87646484375,
+        -26.363862991333008
+      ],
+      "size": [
+        330,
+        86
+      ],
+      "flags": {},
+      "order": 15,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "parameters1",
+          "type": "PARAMETERS",
+          "link": 50,
+          "shape": 7
+        },
+        {
+          "name": "parameters2",
+          "type": "PARAMETERS",
+          "link": 51,
+          "shape": 7
+        },
+        {
+          "name": "parameters3",
+          "type": "PARAMETERS",
+          "link": null,
+          "shape": 7
+        },
+        {
+          "name": "parameters4",
+          "type": "PARAMETERS",
+          "link": null,
+          "shape": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "parameter list",
+          "type": "PARAMETERS",
+          "links": [
+            76
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ConcatParameters"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 37,
+      "type": "PrimitiveNode",
+      "pos": [
+        126,
+        -160
+      ],
+      "size": [
+        328.4537658691406,
+        112.08008575439453
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            47,
+            83
+          ],
+          "slot_index": 0,
+          "widget": {
+            "name": "count"
+          }
+        }
+      ],
+      "properties": {
+        "Run widget replace on values": false
+      },
+      "widgets_values": [
+        954,
+        "randomize"
+      ]
+    },
+    {
+      "id": 48,
+      "type": "Util_View",
+      "pos": [
+        1197,
+        343
+      ],
+      "size": [
+        210,
+        202
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "input",
+          "type": "TENSOR",
+          "link": 85
+        }
+      ],
+      "outputs": [
+        {
+          "name": "tensor",
+          "type": "TENSOR",
+          "links": [
+            69,
+            71
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Util_View"
+      },
+      "widgets_values": [
+        1,
+        48,
+        48,
+        3,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": 41,
+      "type": "PreviewImage",
+      "pos": [
+        928,
+        -330
+      ],
+      "size": [
+        140,
+        246
+      ],
+      "flags": {},
+      "order": 16,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 55
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 40,
+      "type": "Tensor2Img",
+      "pos": [
+        1104,
+        -189
+      ],
+      "size": [
+        216.59999084472656,
+        26
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "imagetensor",
+          "type": "TENSOR",
+          "link": 69
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": [
+            55
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Tensor2Img"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 44,
+      "type": "Util_View",
+      "pos": [
+        348,
+        482
+      ],
+      "size": [
+        210,
+        202
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "input",
+          "type": "TENSOR",
+          "link": 61
+        }
+      ],
+      "outputs": [
+        {
+          "name": "tensor",
+          "type": "TENSOR",
+          "links": [
+            62
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Util_View"
+      },
+      "widgets_values": [
+        1,
+        6912,
+        0,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "id": 49,
+      "type": "LossFN_MSE",
+      "pos": [
+        841,
+        492
+      ],
+      "size": [
+        315,
+        126
+      ],
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "input",
+          "type": "TENSOR",
+          "link": 71
+        },
+        {
+          "name": "label",
+          "type": "TENSOR",
+          "link": 72
+        }
+      ],
+      "outputs": [
+        {
+          "name": "loss",
+          "type": "TENSOR",
+          "links": [
+            81
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LossFN_MSE"
+      },
+      "widgets_values": [
+        true,
+        true,
+        "mean"
+      ]
+    },
+    {
+      "id": 51,
+      "type": "CustomModelTrainer",
+      "pos": [
+        1307,
+        107
+      ],
+      "size": [
+        315,
+        146
+      ],
+      "flags": {},
+      "order": 18,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "optims",
+          "type": "OPTIMIZER",
+          "link": 80
+        },
+        {
+          "name": "loss",
+          "type": "TENSOR",
+          "link": 81
+        },
+        {
+          "name": "epochs",
+          "type": "INT",
+          "link": 78,
+          "widget": {
+            "name": "epochs"
+          }
+        },
+        {
+          "name": "iters",
+          "type": "INT",
+          "link": 79,
+          "widget": {
+            "name": "iters"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "links": null,
+          "slot_index": 0
+        },
+        {
+          "name": "logs",
+          "type": "STRING",
+          "links": null
+        },
+        {
+          "name": "progressbar",
+          "type": "IMAGE",
+          "links": [
+            82
+          ],
+          "slot_index": 2
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CustomModelTrainer"
+      },
+      "widgets_values": [
+        5,
+        5,
+        1
+      ]
+    },
+    {
+      "id": 43,
+      "type": "PreviewImage",
+      "pos": [
+        1461,
+        303
+      ],
+      "size": [
+        156.0439453125,
+        246
+      ],
+      "flags": {},
+      "order": 19,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 82
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 50,
+      "type": "Optimizer_AdamW",
+      "pos": [
+        900.87646484375,
+        100.63602447509766
+      ],
+      "size": [
+        315,
+        58
+      ],
+      "flags": {},
+      "order": 17,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "parameters",
+          "type": "PARAMETERS",
+          "link": 76
+        }
+      ],
+      "outputs": [
+        {
+          "name": "adamw",
+          "type": "OPTIMIZER",
+          "links": [
+            80
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Optimizer_AdamW"
+      },
+      "widgets_values": [
+        "0.000005"
+      ]
+    },
+    {
+      "id": 33,
+      "type": "TrainInitializer",
+      "pos": [
+        301,
+        -167
+      ],
+      "size": [
+        315,
+        126
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "count",
+          "type": "INT",
+          "link": 47,
+          "widget": {
+            "name": "count"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "epochs",
+          "type": "INT",
+          "links": [
+            78
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "iters",
+          "type": "INT",
+          "links": [
+            79
+          ],
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "TrainInitializer"
+      },
+      "widgets_values": [
+        954,
+        1,
+        80
+      ]
+    },
+    {
+      "id": 46,
+      "type": "PreviewImage",
+      "pos": [
+        777,
+        -328
+      ],
+      "size": [
+        140,
+        246
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 65
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      },
+      "widgets_values": []
+    }
+  ],
+  "links": [
+    [
+      31,
+      18,
+      0,
+      20,
+      0,
+      "TENSOR"
+    ],
+    [
+      32,
+      20,
+      0,
+      19,
+      0,
+      "TENSOR"
+    ],
+    [
+      39,
+      19,
+      1,
+      21,
+      0,
+      "MODEL"
+    ],
+    [
+      40,
+      18,
+      1,
+      35,
+      0,
+      "MODEL"
+    ],
+    [
+      47,
+      37,
+      0,
+      33,
+      0,
+      "INT"
+    ],
+    [
+      50,
+      35,
+      0,
+      36,
+      0,
+      "PARAMETERS"
+    ],
+    [
+      51,
+      21,
+      0,
+      36,
+      1,
+      "PARAMETERS"
+    ],
+    [
+      55,
+      40,
+      0,
+      41,
+      0,
+      "IMAGE"
+    ],
+    [
+      61,
+      39,
+      0,
+      44,
+      0,
+      "TENSOR"
+    ],
+    [
+      62,
+      44,
+      0,
+      18,
+      0,
+      "TENSOR"
+    ],
+    [
+      64,
+      45,
+      0,
+      39,
+      0,
+      "IMAGE"
+    ],
+    [
+      65,
+      45,
+      0,
+      46,
+      0,
+      "IMAGE"
+    ],
+    [
+      69,
+      48,
+      0,
+      40,
+      0,
+      "TENSOR"
+    ],
+    [
+      71,
+      48,
+      0,
+      49,
+      0,
+      "TENSOR"
+    ],
+    [
+      72,
+      39,
+      0,
+      49,
+      1,
+      "TENSOR"
+    ],
+    [
+      76,
+      36,
+      0,
+      50,
+      0,
+      "PARAMETERS"
+    ],
+    [
+      78,
+      33,
+      0,
+      51,
+      2,
+      "INT"
+    ],
+    [
+      79,
+      33,
+      1,
+      51,
+      3,
+      "INT"
+    ],
+    [
+      80,
+      50,
+      0,
+      51,
+      0,
+      "OPTIMIZER"
+    ],
+    [
+      81,
+      49,
+      0,
+      51,
+      1,
+      "TENSOR"
+    ],
+    [
+      82,
+      51,
+      2,
+      43,
+      0,
+      "IMAGE"
+    ],
+    [
+      83,
+      37,
+      0,
+      39,
+      1,
+      "INT"
+    ],
+    [
+      85,
+      19,
+      0,
+      48,
+      0,
+      "TENSOR"
+    ],
+    [
+      86,
+      52,
+      0,
+      45,
+      0,
+      "IMAGE"
+    ]
+  ],
+  "groups": [
+    {
+      "id": 1,
+      "title": "Group",
+      "bounding": [
+        468.3944396972656,
+        224.5385284423828,
+        713.02490234375,
+        197.5548095703125
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 2,
+      "title": "Group",
+      "bounding": [
+        -251.15284729003906,
+        7.411016464233398,
+        685.2953491210938,
+        415.2456970214844
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 3,
+      "title": "Group",
+      "bounding": [
+        658.6417236328125,
+        -66.30745697021484,
+        567.0282592773438,
+        235.5184326171875
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.6830134553650712,
+      "offset": [
+        22.425164946008863,
+        274.74600977132957
+      ]
+    }
+  },
+  "version": 0.4
+}
