@@ -3,7 +3,9 @@
 ![1step_](https://github.com/user-attachments/assets/53229cca-46af-4cb8-a978-390d1007442a)
 
 ***ComfyUI를 이용한 모델 학습용 custom node입니다.
+
 ***test 버전이기에 거의 대부분의 기능이 지원되지 않습니다.
+
 ***기본적인 모듈과 model save, model load 및 dataloader을 우선적으로 구현할 예정입니다.
 
 원하는 epoch를 설정한 후, Auto queue를 통해 학습을 진행합니다.
